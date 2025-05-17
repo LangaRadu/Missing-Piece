@@ -1,0 +1,64 @@
+<div class="modal-overlay" *ngIf="isFormOpen" (click)="closeForm()"></div>
+<div class="modal" *ngIf="isFormOpen">
+  <h2>Transfer Form</h2>
+  <form #transferForm="ngForm" (ngSubmit)="submitTransfer(transferForm.value)">
+    <!-- Beneficiaries Field -->
+    <div>
+      <label for="beneficiaries">Beneficiaries</label>
+      <input
+        type="text"
+        id="beneficiaries"
+        name="beneficiaries"
+        [(ngModel)]="formData.beneficiaries"
+        required
+        (input)="checkFieldCompletion('beneficiaries')"
+      />
+    </div>
+
+    <!-- Account Field -->
+    <div *ngIf="formCompletion.beneficiaries">
+      <label for="account">Account</label>
+      <input
+        type="text"
+        id="account"
+        name="account"
+        [(ngModel)]="formData.account"
+        required
+        (input)="checkFieldCompletion('account')"
+      />
+    </div>
+
+    <!-- Amount Field -->
+    <div *ngIf="formCompletion.account">
+      <label for="amount">Amount</label>
+      <input
+        type="number"
+        id="amount"
+        name="amount"
+        [(ngModel)]="formData.amount"
+        required
+        (input)="checkFieldCompletion('amount')"
+      />
+    </div>
+
+    <!-- Details Field -->
+    <div *ngIf="formCompletion.amount">
+      <label for="details">Details</label>
+      <textarea
+        id="details"
+        name="details"
+        [(ngModel)]="formData.details"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="form-button"
+      [disabled]="!transferForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>

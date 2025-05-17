@@ -1,0 +1,20 @@
+/* Unicredit-inspired palette */
+:root {
+  --primary:       #e30613;    /* UniCredit red */
+  --secondary:     #F7F7F7;    /* white */
+  --accent:        #333333;    /* dark gray */
+  --bg-light:      #f5f5f5;    /* light gray */
+  --bg-investitii: #ffe5e5;    /* very light red tint */
+  --bg-fraude:     #f9f9f9;    /* ultra-light gray tint */
+  --bg-dark:       #333333;    /* dark gray */
+}
+.scroll-container {
+  overflow: hidden;  /* Locomotive will handle the real scrolling */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--accent);
+}

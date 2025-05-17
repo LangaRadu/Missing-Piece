@@ -1,0 +1,8 @@
+<div class="sidebar">
+  <ul>
+    <li *ngFor="let theme of themes; let i = index"
+        [class.active]="i === activeThemeIndex">
+      {{ theme }}
+    </li>
+  </ul>
+</div>
