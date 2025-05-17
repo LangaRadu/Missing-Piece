@@ -1,0 +1,29 @@
+.app-header {
+  background-color: var(--secondary);
+  position: fixed;
+  z-index: 10000;
+  min-width: 320px;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-header .container {
+  z-index: 10000;
+
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.app-header .logo {
+  height: 40px;
+  margin-right: 1rem;
+}
+
+.app-header .title {
+  color: var(--primary);
+  font-size: 1.75rem;
+  margin: 0;
+}

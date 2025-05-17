@@ -1,0 +1,66 @@
+<app-sidebar
+  [themes]="titles"
+  [activeThemeIndex]="activePanelIndex">
+</app-sidebar>
+
+<section
+  #panel
+  class="panel"
+  *ngFor="let topic of topics; let i = index"
+>
+  <div class="content">
+    <!-- i === 1: text + video side by side -->
+    <ng-container *ngIf="i === 1; else defaultLayout">
+      <div class="grid-layout">
+        <!-- 80% text column -->
+        <div class="big-text">
+          <h2>{{ topic.title }}</h2>
+          <p *ngFor="let p of topic.paragraphs">{{ p }}</p>
+        </div>
+
+        <!-- 20% video column -->
+        <video
+                class="side-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                controls
+        >
+          <source src="assets/Saga_video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </ng-container>
+
+    <!-- all other indexes -->
+    <ng-template #defaultLayout>
+      <h2>{{ topic.title }}</h2>
+      <div class="big-text">
+        <p *ngFor="let p of topic.paragraphs">{{ p }}</p>
+      </div>
+
+      <button *ngIf="i === 0" class="quiz-button" (click)="openQuiz()">
+        Take Quiz
+      </button>
+      <button *ngIf="i === 2" class="quiz-button" (click)="openSimulation()">
+        Simulate Transfer
+      </button>
+    </ng-template>
+  </div>
+
+</section>
+<app-quiz-popup
+  *ngIf="isQuizOpen"
+  [quizQuestions]="quizQuestions"
+  (close)="closeQuiz()"
+  (submit)="handleQuizSubmit($event)">
+</app-quiz-popup>
+<app-transfer-simulation
+  *ngIf="isSimulationOpen"
+  (close)="closeSimulation()"
+  (submit)="handleSimulationSubmit($event)"
+
+>
+
+</app-transfer-simulation>

@@ -1,0 +1,32 @@
+<div class="modal-overlay" (click)="closePopup()"></div>
+<div class="modal">
+  <h2>Quiz</h2>
+  <form #quizForm="ngForm" (ngSubmit)="submitQuiz(quizForm.value)">
+    <div class="question" *ngFor="let question of quizQuestions; let i = index">
+      <h3>{{ question.text }}</h3>
+      <div *ngFor="let option of question.options">
+        <label>
+          <input
+            type="radio"
+            name="question{{ i }}"
+            [value]="option"
+            required
+            ngModel
+          />
+          {{ option }}
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="quiz-button" [disabled]="!quizForm.valid">
+      Submit Quiz
+    </button>
+    <button type="button" class="quiz-button" (click)="closePopup()">
+      Close Quiz
+    </button>
+  </form>
+
+  <!-- Display the result message -->
+  <div *ngIf="resultMessage" class="result-message">
+    <p>{{ resultMessage }}</p>
+  </div>
+</div>
