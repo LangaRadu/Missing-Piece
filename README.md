@@ -1,6 +1,6 @@
 # EconomyAdvisor
 
-In order to run the project, type the command npm install
+In order to run the project, type the command npm update
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
